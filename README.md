@@ -1,12 +1,18 @@
 # Linux cheatsheet
 
-Aliases
-```bash
-alias grep='grep --color=auto'
-alias nano='nano -ic'
-```
+This is a command cheatsheet which can provide IT professionals with necessery know how, in order to ease their day-to-day tasks.
 
-### OPENSSL Tricks
+## List of content
+ * [Openssl Commands](#openssl-commands)
+ * [Curl Commands](#curl-commands)
+ * [SNMPv3 Commands](#snmpv3-commands)
+ * [Screen Commands](#screen-commands)
+ * [Android Debug Bridge (adb) Commands](#adb-commands)
+ * [Youtube downloader (yt-dlp) Commands](#yt-dlp-commands)
+ * [Docker Commands](#docker-commands)
+ * [Kubernetes Commands](#kubernetes-commands)
+
+### Openssl Commands
 Get all certificates for a given site
 ```bash
 echo | openssl s_client -showcerts -connect www.example.com:443 \
@@ -53,7 +59,7 @@ openssl req -new -sha256 -nodes \
 -out example.csr
 ```
 
-### CURL Tricks
+### Curl Commands
 
 Test HTTPS with certificate chain file
 ```bash
@@ -65,7 +71,8 @@ Check certificate validity for given site
 curl -kvI https://example.com 2>&1 | awk '/Server certificate/,/issuer/ { print }'
 ```
 
-### SNMPv3
+### SNMPv3 Commands
+
 Create SNMPv3 User
 ```bash
 net-snmp-create-v3-user -ro \
@@ -73,14 +80,14 @@ net-snmp-create-v3-user -ro \
 -X EncryptPass -x AES256 snmpuser
 ```
 
-### SCREEN Tricks
+### Screen Commands
 
 | Description | Command |
 |-------------|---------|
-|Create new screen session |```screen -S {screen name}```|
-|Join screen session |```screen -x {screen name}```|
+|Create new screen session |```screen -S <screen_name>```|
+|Join screen session |```screen -x <screen_name>```|
 |Detach from screen  |```screen -d```|
-|Re-attach to screen |```screen -r {screen name}```|
+|Re-attach to screen |```screen -r <screen_name>```|
 
 Keybord Shortcuts
 
@@ -93,18 +100,48 @@ Keybord Shortcuts
 |Start new screen session in window|```Ctrl + a + Ctrl + c```|
 |Exit all screen windows|```Ctrl + a + \```|
 
-### Android Debug Bridge (ADB)
+### ADB Commands
 
 | Description | Command |
 |-------------|---------|
 |Search for devices|```adb devices```|
 |List all packages on the phone|```adb shell pm list packages```|
-|Remove Android package from phone|```adb shell pm uninstall --user 0 {package}```|
+|Remove Android package from phone|```adb shell pm uninstall --user 0 <package>```|
 |Take phone screenshot|```adb exec-out screencap -p > ./picture.png```|
 
-### YT-DLP
+### YT-DLP Commands
 
 Download song from youtube to mp3 format
 ```bash
-yt-dlp -x --audio-format 'mp3' {url}
+yt-dlp -x --audio-format 'mp3' <url>
 ```
+
+### Docker Commands
+
+| Description | Command |
+|-------------|---------|
+|List all containers|```docker ps -a```|
+|List images|```docker images```|
+|List volumes|```docker volume ls```|
+|List networks|```docker network ls```|
+|Check container logs|```docker logs <container_name>```|
+|Execute commands inside containers|```docker exec -it <container_name> <command>```|
+|Inspect images|```docker image inspect <image_name>```|
+|Inspect network|```docker network inspect <network_name>```|
+|Inspect container|```docker container inspect <container_name>```|
+|Inspect volume|```docker volume inspect <volume_name>```|
+|Start multiple containers with docker compose|```docker compose up -d```|
+|Start multiple containers with docker compose </br> and  force images rebuild|```docker compose up -d --build```|
+|Stop multiple containers with docker compose|```docker compose down```|
+|Remove all unused images|```docker image prune -a```|
+
+**Note:** Install docker from the [official page](https://docs.docker.com/engine/install/)
+
+### Kubernetes Commands
+
+| Description | Command |
+|-------------|---------|
+|See which kubernetes cluster you are connected|```kubectl config get-contexts```|
+|See all cluster nodes|```kubectl get nodes -o wide```|
+|See all cluster resources|```kubectl get all```|
+|See all cluster resources in given ```<namespace>```|```kubectl get all -n <namespace>```|
