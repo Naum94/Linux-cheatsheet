@@ -11,6 +11,7 @@ This is a command cheatsheet which can provide IT professionals with necessery k
  * [Youtube downloader (yt-dlp) Commands](#yt-dlp-commands)
  * [Docker Commands](#docker-commands)
  * [Kubernetes Commands](#kubernetes-commands)
+ * [Helm Commands](#helm-commands)
 
 ### Openssl Commands
 Get all certificates for a given site
@@ -141,7 +142,16 @@ yt-dlp -x --audio-format 'mp3' <url>
 
 | Description | Command |
 |-------------|---------|
-|See which kubernetes cluster you are connected|```kubectl config get-contexts```|
+|See which kubernetes cluster you are connected to.|```kubectl config get-contexts```|
 |See all cluster nodes|```kubectl get nodes -o wide```|
 |See all cluster resources|```kubectl get all```|
 |See all cluster resources in given ```<namespace>```|```kubectl get all -n <namespace>```|
+
+### Helm Commands
+
+| Description | Command |
+|-------------|---------|
+|Update local repositories|```helm repo update```|
+|Add repository|```helm repo add <name> <repositry_url>```|
+|List local repositories|```helm repo list```|
+|Check chart version for given app|```helm search repo -l <repository_name>/<chart_name>```|
