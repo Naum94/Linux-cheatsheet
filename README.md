@@ -83,12 +83,12 @@ net-snmp-create-v3-user -ro \
 
 ### Screen Commands
 
-| Description | Command |
+| Command | Description |
 |-------------|---------|
-|Create new screen session |```screen -S <screen_name>```|
-|Join screen session |```screen -x <screen_name>```|
-|Detach from screen  |```screen -d```|
-|Re-attach to screen |```screen -r <screen_name>```|
+|```screen -S <screen_name>```|Create new screen session|
+|```screen -x <screen_name>```|Join screen session |
+|```screen -d```|Detach from screen|
+|```screen -r <screen_name>```|Re-attach to screen |
 
 Keybord Shortcuts
 
@@ -103,12 +103,12 @@ Keybord Shortcuts
 
 ### ADB Commands
 
-| Description | Command |
+| Command | Description |
 |-------------|---------|
-|Search for devices|```adb devices```|
-|List all packages on the phone|```adb shell pm list packages```|
-|Remove Android package from phone|```adb shell pm uninstall --user 0 <package>```|
-|Take phone screenshot|```adb exec-out screencap -p > ./picture.png```|
+|```adb devices```|Search for devices|
+|```adb shell pm list packages```|List all packages on the phone|
+|```adb shell pm uninstall --user 0 <package>```|Remove Android package from phone|
+|```adb exec-out screencap -p > ./picture.png```|Take phone screenshot|
 
 ### YT-DLP Commands
 
@@ -140,18 +140,36 @@ yt-dlp -x --audio-format 'mp3' <url>
 
 ### Kubernetes Commands
 
-| Description | Command |
+| Command | Description |
 |-------------|---------|
-|See which kubernetes cluster you are connected to.|```kubectl config get-contexts```|
-|See all cluster nodes|```kubectl get nodes -o wide```|
-|See all cluster resources|```kubectl get all```|
-|See all cluster resources in given ```<namespace>```|```kubectl get all -n <namespace>```|
+|```kubectl config get-contexts```|See which kubernetes cluster you are connected to.|
+|```kubectl config set-context <context>```|Set which kubernets cluster to run commands on.|
+|```kubectl get nodes -o wide```|See all cluster nodes|
+|```kubectl get all```|See all cluster resources|
+|```kubectl get all -n <namespace>```|See all resources inside the `<namespace>`|
+|```kubectl get <resources> -n <namespace>```|See given ```<resources>``` in the ```<namespace>```|
+|```kubectl get all -n <namespace>```|See all cluster resources in given ```<namespace>```|
+|`kubectl describe <type> <name> -n <namespace>`|Provide details for `<type>` with `<name>` in  `<namespace>`|
+|```kubectl edit <resource> <name>```|Edit config for exiting resources|
+|`kubectl delete <podname> -n <namespace>`|Delete pod with name `<podname>` in `<namespace>`|
+|`kubectl cordone <node>`|Prevent pods to be deployed on `<node>`|
+|`kubectl uncrodone <node>`|Enable pod scheduling on `<node>`|
+|`kubectl drain <node>`|Drain `<node>` from resources and disable pod scheduling|
 
 ### Helm Commands
 
-| Description | Command |
+| Command |Description|
 |-------------|---------|
-|Update local repositories|```helm repo update```|
-|Add repository|```helm repo add <name> <repositry_url>```|
-|List local repositories|```helm repo list```|
-|Check chart version for given app|```helm search repo -l <repository_name>/<chart_name>```|
+|`helm repo update`|Update local repositories|
+|`helm repo add <name> <repositry_url>`|Add repository|
+|`helm repo list`|List local repositories|
+|`helm search repo -l <repository_name>/<chart_name>`|Check chart version for given app|
+|`helm delete <release> -n <namespace>`| Delete `<release>` under `<namespace>`|
+|`helm pull <repo>/<chart> --version <version> --untar`|Download the app chart with `<version>` for inspection.|
+
+### Azure Command Line Interface
+| Command |Description|
+|-------------|---------|
+|`az login`| Login to Azure |
+|`az account list -o table`| List subscriptions and active subscription. |
+|`az account set --subscription <id>`| Set subscription with `<id>` to be active. |
